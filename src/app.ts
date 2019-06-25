@@ -26,7 +26,7 @@ app.use(json());
 
 // Routes
 // Main API Routes
-app.use("/api/users", userRoutes);
+app.use("/api/users", usersRoutes);
 
 // Index Route
 app.get("/", (req, res) => {
