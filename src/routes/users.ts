@@ -17,3 +17,10 @@ router.post("/register", (req, res, next) => {
     }
   });
 });
+
+router.post("/authenticate", (req, res, next) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  getUserByUsername()
+});
