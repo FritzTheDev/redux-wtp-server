@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsnd --respawn --transpileOnly dist/app.js"
+    "dev": "tsnd --respawn --transpileOnly --require dotenv/config dist/app.js"
   },
   "keywords": [],
   "author": "Frederick \"Fritz\" Johnson",
