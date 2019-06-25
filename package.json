@@ -8,5 +8,10 @@
   },
   "keywords": [],
   "author": "Frederick \"Fritz\" Johnson",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0"
+  }
 }
