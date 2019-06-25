@@ -4,7 +4,7 @@ import express, { json } from "express";
 import passport from "passport";
 
 // Custom Module Imports
-import { passportSetup } from "./config/passport-strat-options";
+import { passportSetup } from "./config/passport";
 import { usersRoutes } from "./routes/users";
 
 // Environment Vars

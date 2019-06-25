@@ -53,6 +53,7 @@ router.post("/authenticate", (req, res, next) => {
         return res.json({ success: false, msg: "Wrong Password" });
       }
     });
-
   });
 });
+
+export const usersRoutes = router;
