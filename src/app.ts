@@ -1,8 +1,8 @@
 // Package Imports
 import cors from "cors";
 import express, { json } from "express";
-import passport from "passport";
 import mongoose from "mongoose";
+import passport from "passport";
 
 // Custom Module Imports
 import { passportSetup } from "./config/passport";
