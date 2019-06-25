@@ -1,9 +1,10 @@
 // Package Imports
+import { PassportStatic } from "passport";
 import { ExtractJwt, Strategy, StrategyOptions } from "passport-jwt";
 import { getUserById } from "../models/user";
 
 // StrategyOptions object to add options to
-export const passportSetup = (passport) => {
+export const passportSetup = (passport: PassportStatic) => {
   const opts: StrategyOptions = {
   // defines where/how to extract the JWT
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
