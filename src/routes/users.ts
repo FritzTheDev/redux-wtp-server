@@ -32,14 +32,25 @@ router.post("/authenticate", (req, res, next) => {
       return res.json({ success: false, msg: "User Not Found" });
     }
 
-    comparePassword(password, user.password, (err, isMatch) => {
-      if (err) {
-        throw err;
+    comparePassword(password, user.password, (comparePasswordErr, isMatch) => {
+      if (comparePasswordErr) {
+        throw comparePasswordErr;
       }
       if (isMatch) {
         const token = jwt.sign({ data: user }, process.env.SECRET, {
-
+          expiresIn: 604800, // 1 week
         });
+        res.json({
+          success: true,
+          token: "Bearer " + token,
+          user: {
+            email: user.email,
+            fullName: user.fullName,
+            id: user._id,
+          },
+        });
+      } else {
+        return res.json({ success: false, msg: "Wrong Password" });
       }
     });
 
