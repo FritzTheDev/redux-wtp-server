@@ -23,6 +23,11 @@ export const getUserById = (id, callback) => {
   User.findById(id, callback);
 };
 
+export const getUserByEmail = (email, callback) => {
+  const query = { email };
+  User.findOne(query, callback);
+};
+
 export const addUser = (newUser, callback) => {
   genSalt(10, (saltGenErr, salt) => {
     hash(newUser.password, salt, (hashErr, hashResult) => {
