@@ -1,5 +1,6 @@
 // Package Imports
-import { ExtractJwt, StrategyOptions, Strategy } from "passport-jwt";
+import { ExtractJwt, Strategy, StrategyOptions } from "passport-jwt";
+import { getUserById } from "../models/user";
 
 // StrategyOptions object to add options to
 export const passportSetup = (passport) => {
@@ -9,8 +10,9 @@ export const passportSetup = (passport) => {
   // defines whether the strat should use a key or a secret
   secretOrKey: "secret",
   };
-  passport.use(new Strategy(opts, (jwt_payload, done) => {
-    User.getUserById(jwt_payload.data._id, (err, user) => {
+  // set up the strategy to protect "User" endpoints from non-authed users
+  passport.use(new Strategy(opts, (jwtPayload, done) => {
+    getUserById(jwtPayload.data._id, (err, user) => {
       if (err) {
         return done(err, false);
       }
