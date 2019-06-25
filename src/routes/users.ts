@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { addUser, User } from "../models/user";
+import jwt from "jsonwebtoken";
+import { addUser, comparePassword, getUserByEmail, User } from "../models/user";
 
 const router = Router();
 
@@ -22,5 +23,25 @@ router.post("/authenticate", (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  getUserByUsername()
+  getUserByEmail(email, (err, user) => {
+    if (err) {
+      throw err;
+    }
+
+    if (!user) {
+      return res.json({ success: false, msg: "User Not Found" });
+    }
+
+    comparePassword(password, user.password, (err, isMatch) => {
+      if (err) {
+        throw err;
+      }
+      if (isMatch) {
+        const token = jwt.sign({ data: user }, process.env.SECRET, {
+
+        });
+      }
+    });
+
+  });
 });
