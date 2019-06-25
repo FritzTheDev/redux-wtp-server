@@ -5,7 +5,7 @@ import passport from "passport";
 
 // Custom Module Imports
 import { passportSetup } from "./config/passport-strat-options";
-import { userRoutes } from "./routes/user";
+import { usersRoutes } from "./routes/users";
 
 // Environment Vars
 const port = process.env.PORT || 8080;
