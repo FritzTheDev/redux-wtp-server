@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsnd --respawn --transpileOnly --require dotenv/config dist/app.js"
+    "dev": "tsnd --respawn --transpileOnly --require dotenv/config src/app.ts"
   },
   "keywords": [],
   "author": "Frederick \"Fritz\" Johnson",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0"
