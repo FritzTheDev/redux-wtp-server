@@ -1,5 +1,6 @@
 import { Router } from "express";
 import jwt from "jsonwebtoken";
+import { authenticate } from "passport";
 import { addUser, comparePassword, getUserByEmail, User } from "../models/user";
 
 const router = Router();
@@ -54,6 +55,10 @@ router.post("/authenticate", (req, res, next) => {
       }
     });
   });
+});
+
+router.get("/profile", authenticate("jwt", { session: false }), (req, res, next) => {
+  res.json({ user: req.user });
 });
 
 export const usersRoutes = router;
