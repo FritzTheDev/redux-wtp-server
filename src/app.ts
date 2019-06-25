@@ -5,6 +5,7 @@ import passport from "passport";
 
 // Custom Module Imports
 import { passportSetup } from "./config/passport-strat-options";
+import { userRoutes } from "./routes/user";
 
 // Environment Vars
 const port = process.env.PORT || 8080;
@@ -25,7 +26,7 @@ app.use(json());
 
 // Routes
 // Main API Routes
-app.use('/api/users', users);
+app.use("/api/users", userRoutes);
 
 // Index Route
 app.get("/", (req, res) => {
