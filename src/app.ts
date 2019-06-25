@@ -2,6 +2,7 @@
 import cors from "cors";
 import express, { json } from "express";
 import passport from "passport";
+import mongoose from "mongoose";
 
 // Custom Module Imports
 import { passportSetup } from "./config/passport";
@@ -9,6 +10,15 @@ import { usersRoutes } from "./routes/users";
 
 // Environment Vars
 const port = process.env.PORT || 8080;
+const dbURI = process.env.DB_URI;
+
+// Connect to DB
+mongoose.connect(dbURI, { useNewUrlParser: true }, (err) => {
+  if (err) {
+    throw err;
+  }
+});
+
 // App Initialization
 const app = express();
 
